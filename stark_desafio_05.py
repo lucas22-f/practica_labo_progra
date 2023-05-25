@@ -2,6 +2,11 @@ from jarvis_functions import *
 from jarvis_functions01 import *
 import re
 import json
+from copy import deepcopy
+
+def copiar_deep(lista:list)->list:
+    return deepcopy(lista)
+
 
 
 
@@ -48,7 +53,6 @@ def stark_menu_principal_desafio_5() -> str:
 
     return retorno
 
-print(stark_menu_principal_desafio_5())
 # 1.3
 """ Crear la función 'stark_marvel_app_5' la cual recibirá por parámetro la
 lista de héroes y se encargará de la ejecución principal de nuestro
@@ -57,7 +61,7 @@ con prefijo 'stark_' donde crea correspondiente. """
 
 
 def stark_marvel_app_5(lista: list):
-
+    lista = copiar_deep(lista)
     opcion = stark_menu_principal_desafio_5()
     stark_normalizar_datos(lista)
     while (opcion != 'Z'):
@@ -150,7 +154,7 @@ def leer_archivo(string: str) -> list:
             lista_final.append(nuevo_dict)
         return lista_final
 
-lista_personajes = leer_archivo("C:\\Users\\Lucas\\Desktop\\google-python-exercises\\clase 8\\data_stark.json")
+lista_personajes = leer_archivo("C:\\Users\\Debora\\Desktop\\Python\\practica_labo_progra\\data_stark.json")
 # 1.5
 def guardar_archivo(nombre: str, contenido: str) -> bool:
     if (type(contenido) == type(str()) and contenido!=""):
@@ -506,7 +510,6 @@ def guardar_cantidad_heroes_tipo(dic:dict,key:str):
         return True
     else:
         return False
-
 # 5.3
 """ 
 Crear la función 'stark_calcular_cantidad_por_tipo' la cual recibirá por
